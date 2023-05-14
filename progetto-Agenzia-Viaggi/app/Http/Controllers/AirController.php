@@ -72,20 +72,32 @@ class AirController extends Controller
                 ],
             ],
         ];
-
-    public function welcome(){
         
-        return view('welcome', ['voli'=>self::$flights]);
+        public function welcome(){
+            
+            return view('welcome', ['voli'=>self::$flights]);
         }
         
-    public function detail($destinazione){
-        foreach (self::$flights as $flight){
+        public function detailDeparture($destinazione){
+            foreach (self::$flights as $flight){
                 foreach ($flight as $singleFlight){
                     if ($singleFlight['id'] == $destinazione){
-                        return view('detail', ['volo' => $singleFlight]);
+                        return view('detailDeparture', ['volo' => $singleFlight]);
                     }
+                }
             }
+            abort(404);
         }
+        
+        public function detailArrival($destinazione){
+            foreach (self::$flights as $flight){
+                foreach ($flight as $singleFlight){
+                    if ($singleFlight['id'] == $destinazione){
+                        return view('detailArrival', ['volo' => $singleFlight]);
+                    }
+                }
+            }
+            abort(404);
         }
     }
     

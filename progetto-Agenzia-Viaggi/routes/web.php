@@ -16,4 +16,6 @@ use App\Http\Controllers\AirController;
 
 Route::get('/', [AirController::class , 'welcome'])->name('welcome');
 
-Route::get('/detail/{destinazione}', [AirController::class , 'detail'])->name('detail');
+Route::get('/detailDeparture/{destinazione}', [AirController::class , 'detailDeparture'])->name('detailDeparture');
+
+Route::get('/detailArrival/{destinazione}', [AirController::class , 'detailArrival'])->name('detailArrival');
